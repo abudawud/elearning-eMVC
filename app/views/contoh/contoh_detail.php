@@ -1,3 +1,5 @@
+<?php if ( ! defined('ROOT')) exit('No direct script access allowed'); ?>
+
 <html>
     <head>
         <title>Contoh - <?= $tittle ?></title>

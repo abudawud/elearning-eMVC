@@ -1,4 +1,5 @@
-<?php
+<?php if ( ! defined('ROOT')) exit('No direct script access allowed');
+
 class contoh extends C_Controller{
     public function route($props){
         $route = $props[0];
