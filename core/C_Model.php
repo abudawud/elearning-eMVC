@@ -5,4 +5,13 @@ class C_Model {
     {
         $this->db = Database::getDB();
     }
+
+    function results($res){
+        $data = array();
+        while($record = $res->fetch_object()){
+            array_push($data, $record);
+        }
+
+        return $data;
+    }
 }

@@ -1,7 +1,7 @@
 <?php if ( ! defined('ROOT')) exit('No direct script access allowed');
 
 class C_Controller {
-    function render($filename, $data){
+    function render($filename, $data = null){
         $view = VIEWS . $filename . ".php";
 
         if(!file_exists($view)){
