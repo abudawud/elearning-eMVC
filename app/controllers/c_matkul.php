@@ -50,7 +50,7 @@
                 case 'add':
                     $title = "Tambah Master Matakuliah";
                     break;
-                case 'read':
+                case 'view':
                     $title = "Detail Master Matakuliah";
                     break;
                 case 'edit':

@@ -28,7 +28,10 @@
                         <td><?= $item->judul ?></td>
                         <td><?= $item->deskripsi ?></td>
                         <td><?= $item->file ?></td>
-                        <td><a href='#'>View</a> / <a href='#'>Edit</a> / <a href='#'>Delete</a></td>
+                        <td>
+                            <a href='<?= BASE_URL ?>c_matkul/form/view/<?= $item->id_matkul ?>'>View</a> / 
+                            <a href='<?= BASE_URL ?>c_matkul/form/edit/<?= $item->id_matkul ?>'>Edit</a> / 
+                            <a href='<?= BASE_URL ?>c_matkul/form/delete/<?= $item->id_matkul ?>'>Delete</a></td>
                     </tr>
                 <?php } ?>
             </tbody>
