@@ -3,12 +3,23 @@ body{
     background-color: #EAE7D4;
 }
 
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    padding: 5px;
+    font-size: 12px;
+    text-decoration: none;
+    color: initial;
+}
+
 #wrapper{
     margin: auto;
     width: 80%;
 }
 
 #navbar{
+    vertical-align: middle;
     height: 50px;
     width: 100%;
     background-color: #32B0E0;
@@ -34,6 +45,17 @@ body{
     background-color: #152C2F;
 }
 
+.nav-title{
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav{
+    color: white;
+    padding: 10px;
+}
+
 .clearfix{
     clear: both;
 }
@@ -42,12 +64,52 @@ body{
     margin: 10px;
 }
 
+.text-right{
+    text-align: right;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.bg-primary{
+    background-color:  #EAE7D4;
+}
+.c-flex{
+    display: flex;
+}
+
+.col-3{
+    width: 30%;
+}
+
+.col-5{
+    width: 50%;
+}
+
+.col-10{
+    width: 100%;
+}
+
 .content-title{
     background-color: #EAE7D4;
     padding: 5px;
     margin-bottom: 10px;
     font-size: 20px;
     color: #152C2F;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.menu    {position: relative; }
+.menu ul {position: relative; margin: 0; padding: 0;}
+/* Center text and give space between boxes*/
+.menu li { list-style: none; font-family:  Arial, Helvetica, sans-serif;	font-size: 18px; color: #333; line-height: 21px; margin: 0px 0px 0px 0px; }
+/* */
+.menu li a {text-decoration: none; display: block; height: 22px; color: cornsilk; padding: 10px 7px 10px 7px; border-bottom: gainsboro 2px solid}
+.menu li a:hover { border-bottom: #32B0E0 2px solid; display: block; background: #152C2F; color: #32B0E0;}
+/* background color depending on category */	
+.ps a{background: #BCEDDC;}	
+.dr a{background: #ABDDC8;}
+.ed a{background: #97BFB0;}
+.ra a{background: #708E83;}

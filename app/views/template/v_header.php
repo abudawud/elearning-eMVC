@@ -14,6 +14,9 @@
     <div id="wrapper">
         <!-- NAVBAR -->
         <div id="navbar">
-
+            <div class="c-flex nav">
+                <div class="col-5 nav-title">E-Leaning</div>
+                <div style="margin:auto" class="col-5 text-right"><b>username</b> ( logout )</div>
+            </div>
         </div>
         <!-- END OF NAVBAR -->

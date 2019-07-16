@@ -3,16 +3,16 @@
     border-collapse: collapse;
 }
 
-.table > thead{
+.table thead{
     background-color: #EAE7D4;
 }
 
-thead > tr > th{
+.table thead tr th{
     border: #152C2F solid 1px;
     padding: 5px;
 }
 
-tbody > tr > td{
+.table tbody tr td{
     padding: 2px;
     border: #152C2F solid 1px;
 }
