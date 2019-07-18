@@ -3,14 +3,30 @@ body{
     background-color: #EAE7D4;
 }
 
-a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
+.button {
+    font-family: Arial, Helvetica, sans-serif;
     appearance: button;
-    padding: 5px;
-    font-size: 12px;
+    border: none;
+    padding: 5px 8px;
+    text-align: center;
     text-decoration: none;
-    color: initial;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:hover{
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
+}
+.btn-primary{
+    background-color: #32B0E0;
+    color: white;
+}
+
+.btn-danger{
+    background-color: crimson;
+    color: white;
 }
 
 #wrapper{
@@ -72,7 +88,7 @@ a.button {
     text-align: center;
 }
 
-.bg-primary{
+.bg-secondary{
     background-color:  #EAE7D4;
 }
 .c-flex{
@@ -89,6 +105,10 @@ a.button {
 
 .col-10{
     width: 100%;
+}
+
+.m-auto{
+    margin: auto;
 }
 
 .content-title{
