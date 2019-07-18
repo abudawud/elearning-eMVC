@@ -6,6 +6,7 @@ define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 define('BASE_URL', $root);
 define('VIEWS', ROOT . "app/views/");
 
+require(ROOT . "core/C_Utils.php");
 require(ROOT . "core/C_Controller.php");
 require(ROOT . "core/C_Model.php");
 require(ROOT . "config/config.php");

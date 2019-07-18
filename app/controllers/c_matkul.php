@@ -21,6 +21,10 @@
                     $this->form($params);
                     break;
 
+                case 'save':
+                    $this->save($params);
+                    break;
+
                 default:
                     $this->page404();
                     break;
@@ -46,7 +50,11 @@
         }
 
         function form($params = null){
-            switch($params[0]){
+            $action = $params[0];
+            $id = $params[1];
+
+            $matkul = array();
+            switch($action){
                 case 'add':
                     $title = "Tambah Master Matakuliah";
                     break;
@@ -55,6 +63,7 @@
                     break;
                 case 'edit':
                     $title = "Edit Master Matakuliah";
+                    $matkul = $this->m_matkul->get($params[1]);
                     break;
                 case 'delete':
                     $title = "Hapus Master Matakuliah";
@@ -63,9 +72,39 @@
 
             $data = array(
                 'title' => "$title",
-                'id_matkul' => $params[1]
+                'action' => $action,
+                'matkul' => $matkul
             );
 
             $this->template('matkul/v_form_matkul', $data);
+        }
+
+        function save($params = null){
+            $action = $_POST['action'];
+            $id = $_POST['id'];
+            $data = array(
+                'nm_matkul' => $_POST['matkul_name'],
+                'judul' => $_POST['matkul_title'],
+                'deskripsi' => $_POST['matkul_desc']
+            );
+
+            switch($action){
+                case 'add':
+                    $res = $this->m_matkul->add($data);
+                    $msg = $res ? "Master Mata Kuliah Berhasil Ditambahkan!" : "Master Mata Kuliah Gagal Ditambahkan!";
+                    break;
+                case 'edit':
+                    $res = $this->m_matkul->update($data, array('id_matkul' => $id));
+                    $msg = $res ? "Master Mata Kuliah Berhasil Dirubah!" : "Master Mata Kuliah Gagal Dirubah!";
+                    break;
+            }
+
+            if($res){
+                js_redirect(BASE_URL . "c_matkul", $msg);
+            }else{
+                js_redirect(BASE_URL . "c_matkul", $msg);
+            }
+
+
         }
     }
