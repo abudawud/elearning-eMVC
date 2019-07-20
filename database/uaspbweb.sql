@@ -87,22 +87,20 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elearning`.`dosen_teachs`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `elearning`.`dosen_teachs` (
-  `id_dosen_teachs` INT NOT NULL COMMENT '',
-  `id_dosen` INT NOT NULL COMMENT '',
-  `id_matkul` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id_dosen_teachs`)  COMMENT '',
-  CONSTRAINT `fk_dosen_teachs_id_dosen`
-    FOREIGN KEY (`id_dosen`)
-    REFERENCES `elearning`.`ms_dosen` (`id_dosen`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_dosen_teachs_id_matkul`
-    FOREIGN KEY (`id_matkul`)
-    REFERENCES `elearning`.`ms_matkul` (`id_matkul`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE `dosen_teachs` (
+  `id_dosen_teachs` int(11) NOT NULL AUTO_INCREMENT,
+  `id_dosen` int(11) NOT NULL,
+  `id_matkul` int(11) NOT NULL,
+  `file` varchar(100) DEFAULT NULL,
+  `keterangan_file` text,
+  `file_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_dosen_teachs`),
+  KEY `fk_dosen_teachs_1_idx` (`id_dosen`),
+  KEY `fk_dosen_teachs_id_matkul_idx` (`id_matkul`),
+  CONSTRAINT `fk_dosen_teachs_id_dosen` FOREIGN KEY (`id_dosen`) REFERENCES `ms_dosen` (`id_dosen`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dosen_teachs_id_matkul` FOREIGN KEY (`id_matkul`) REFERENCES `ms_matkul` (`id_matkul`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
 
 
 -- -----------------------------------------------------

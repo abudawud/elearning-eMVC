@@ -3,7 +3,7 @@
     class c_mahasiswa extends C_Controller
     {
         function __construct()
-        { 
+        {
             $this->load_model('m_mahasiswa');
         }
 
@@ -23,6 +23,10 @@
 
                 case 'save':
                     $this->save($params);
+                    break;
+
+                case 'delete':
+                    $this->delete($params);
                     break;
 
                 default:
@@ -49,12 +53,13 @@
             $this->template('mahasiswa/v_mahasiswa', $data);
         }
 
-        function form($params = null){
+        function form($params = null)
+        {
             $action = $params[0];
             $id = $params[1];
 
             $mahasiswa = array();
-            switch($action){
+            switch ($action) {
                 case 'add':
                     $title = "Tambah Master Mahasiswa";
                     break;
@@ -79,7 +84,8 @@
             $this->template('mahasiswa/v_form_mahasiswa', $data);
         }
 
-        function save($params = null){
+        function save($params = null)
+        {
             $action = $_POST['action'];
             $id = $_POST['id'];
             $data = array(
@@ -90,7 +96,7 @@
                 'alamat' => $_POST['mahasiswa_alamat'],
             );
 
-            switch($action){
+            switch ($action) {
                 case 'add':
                     $res = $this->m_mahasiswa->add($data);
                     $msg = $res ? "Master Mahasiswa Berhasil Ditambahkan!" : "Master Mahasiswa Gagal Ditambahkan!";
@@ -101,12 +107,21 @@
                     break;
             }
 
-            if($res){
+            if ($res) {
                 js_redirect(BASE_URL . "c_mahasiswa", $msg);
-            }else{
+            } else {
                 js_redirect(BASE_URL . "c_mahasiswa", $msg);
             }
+        }
 
-
+        function delete($params = null)
+        {
+            $id = $params[0];
+            $res = $this->m_mahasiswa->delete($id);
+            if ($res) {
+                js_redirect(BASE_URL . "c_mahasiswa", "Master mahasiswa berhasil dihapus");
+            } else {
+                js_redirect(BASE_URL . "c_mahasiswa", "Master mahasiswa gagal dihapis!");
+            }
         }
     }

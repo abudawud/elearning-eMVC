@@ -19,4 +19,9 @@ class m_mahasiswa extends C_Model{
     function update($data, $where){
         return $this->db_update('ms_mahasiswa', $data, $where);
     }
+
+    function delete($id){
+        $sql = "DELETE FROM ms_mahasiswa WHERE id_mahasiswa = $id";
+        return $this->db->query($sql);
+    }
 }

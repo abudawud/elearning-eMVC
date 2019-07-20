@@ -19,4 +19,9 @@ class m_dosen extends C_Model{
     function update($data, $where){
         return $this->db_update('ms_dosen', $data, $where);
     }
+
+    function delete($id){
+        $sql = "DELETE FROM ms_dosen WHERE id_dosen = $id";
+        return $this->db->query($sql);
+    }
 }

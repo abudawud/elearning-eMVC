@@ -3,7 +3,7 @@
     class c_dosen extends C_Controller
     {
         function __construct()
-        { 
+        {
             $this->load_model('m_dosen');
         }
 
@@ -23,6 +23,10 @@
 
                 case 'save':
                     $this->save($params);
+                    break;
+
+                case 'delete':
+                    $this->delete($params);
                     break;
 
                 default:
@@ -49,12 +53,13 @@
             $this->template('dosen/v_dosen', $data);
         }
 
-        function form($params = null){
+        function form($params = null)
+        {
             $action = $params[0];
             $id = $params[1];
 
             $dosen = array();
-            switch($action){
+            switch ($action) {
                 case 'add':
                     $title = "Tambah Master Dosen";
                     break;
@@ -79,17 +84,19 @@
             $this->template('dosen/v_form_dosen', $data);
         }
 
-            function delete($params = null){
+        function delete($params = null)
+        {
             $id = $params[0];
             $res = $this->m_dosen->delete($id);
-            if($res){
+            if ($res) {
                 js_redirect(BASE_URL . "c_dosen", "Master Dosen berhasil dihapus");
-            }else{
+            } else {
                 js_redirect(BASE_URL . "c_dosen", "Master Dosen gagal dihapis!");
             }
         }
 
-        function save($params = null){
+        function save($params = null)
+        {
             $action = $_POST['action'];
             $id = $_POST['id'];
             $data = array(
@@ -101,7 +108,7 @@
                 'foto' => $_POST['dosen_foto']
             );
 
-            switch($action){
+            switch ($action) {
                 case 'add':
                     $res = $this->m_dosen->add($data);
                     $msg = $res ? "Master Dosen Berhasil Ditambahkan!" : "Master Dosen Gagal Ditambahkan!";
@@ -112,12 +119,10 @@
                     break;
             }
 
-            if($res){
+            if ($res) {
                 js_redirect(BASE_URL . "c_dosen", $msg);
-            }else{
+            } else {
                 js_redirect(BASE_URL . "c_dosen", $msg);
             }
-
-
         }
     }

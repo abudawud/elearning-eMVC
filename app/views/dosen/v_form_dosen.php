@@ -39,7 +39,7 @@
                     </tr>
                     <tr class="text-center bg-secondary">
                         <td colspan="3">
-                            <a type="submit" style="margin:3px 0px 3px 0px" href="<?= BASE_URL ?>/c_dosen" class="button btn-danger">BATAL</a>
+                            <a type="submit" style="margin:3px 0px 3px 0px" href="<?= BASE_URL ?>c_dosen" class="button btn-danger">BATAL</a>
                             <button style="margin:3px 0px 3px 0px" type="submit" class="button btn-primary">SIMPAN</a>
                         </td>
 

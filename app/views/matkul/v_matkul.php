@@ -45,13 +45,11 @@
 </div>
 <!-- END OF CONTAINER -->
 <script>
-function del(id){
-    if(confirm("Yakin ingin menghapus data?") ){
-        window.location = "<?= BASE_URL ?>c_matkul/delete/" + id;
-    }else{
-        alfunction test(){
-    alert("HALO");
-}ert("Aksi dibatalkan!");
+    function del(id) {
+        if (confirm("Yakin ingin menghapus data?")) {
+            window.location = "<?= BASE_URL ?>c_matkul/delete/" + id;
+        } else {
+            alert("Aksi dibatalkan!");
+        }
     }
-}
 </script>
