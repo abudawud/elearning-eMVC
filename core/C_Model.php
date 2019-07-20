@@ -19,7 +19,6 @@ class C_Model {
         $fields = implode(', ', array_keys($data));
         $value = "'" . implode("','", $data) . "'";
         $sql = "INSERT INTO $table ($fields) VALUE ($value)";
-
         return $this->db->query($sql);
     }
 
