@@ -37,10 +37,7 @@ CREATE TABLE IF NOT EXISTS `elearning`.`ms_dosen` (
   `tgl_lhr` DATE NULL,
   `alamat` VARCHAR(45) NULL,
   `foto` VARCHAR(45) NULL,
-  `ms_pengguna_id_pengguna` INT NOT NULL,
   PRIMARY KEY (`id_dosen`),
-  INDEX `fk_ms_dosen_ms_pengguna1_idx` (`ms_pengguna_id_pengguna` ASC),
-  CONSTRAINT `fk_ms_dosen_ms_pengguna1`
     FOREIGN KEY (`ms_pengguna_id_pengguna`)
     REFERENCES `elearning`.`ms_pengguna` (`id_pengguna`)
     ON DELETE NO ACTION
@@ -59,10 +56,7 @@ CREATE TABLE IF NOT EXISTS `elearning`.`ms_mahasiswa` (
   `tgl_lhr` DATE NULL,
   `alamat` VARCHAR(45) NULL,
   `foto` VARCHAR(45) NULL,
-  `ms_pengguna_id_pengguna` INT NOT NULL,
   PRIMARY KEY (`id_mahasiswa`),
-  INDEX `fk_ms_mahasiswa_ms_pengguna_idx` (`ms_pengguna_id_pengguna` ASC),
-  CONSTRAINT `fk_ms_mahasiswa_ms_pengguna`
     FOREIGN KEY (`ms_pengguna_id_pengguna`)
     REFERENCES `elearning`.`ms_pengguna` (`id_pengguna`)
     ON DELETE NO ACTION
@@ -91,14 +85,10 @@ CREATE TABLE IF NOT EXISTS `elearning`.`dosen_teachs` (
   `id_dosen` INT NOT NULL,
   `id_matkul` INT NOT NULL,
   PRIMARY KEY (`id_dosen_teachs`),
-  INDEX `fk_dosen_teachs_1_idx` (`id_dosen` ASC),
-  INDEX `fk_dosen_teachs_id_matkul_idx` (`id_matkul` ASC),
-  CONSTRAINT `fk_dosen_teachs_id_dosen`
     FOREIGN KEY (`id_dosen`)
     REFERENCES `elearning`.`ms_dosen` (`id_dosen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_dosen_teachs_id_matkul`
     FOREIGN KEY (`id_matkul`)
     REFERENCES `elearning`.`ms_matkul` (`id_matkul`)
     ON DELETE NO ACTION
@@ -114,14 +104,10 @@ CREATE TABLE IF NOT EXISTS `elearning`.`mahasiswa_follows` (
   `id_mahasiswa` INT NOT NULL,
   `id_matkul` INT NOT NULL,
   PRIMARY KEY (`idmahasiswa_follows`),
-  INDEX `fk_mahasiswa_follows_id_mahasiswa_idx` (`id_mahasiswa` ASC),
-  INDEX `fk_mahasiswa_follows_id_matkul_idx` (`id_matkul` ASC),
-  CONSTRAINT `fk_mahasiswa_follows_id_mahasiswa`
     FOREIGN KEY (`id_mahasiswa`)
     REFERENCES `elearning`.`ms_mahasiswa` (`id_mahasiswa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_mahasiswa_follows_id_matkul`
     FOREIGN KEY (`id_matkul`)
     REFERENCES `elearning`.`ms_matkul` (`id_matkul`)
     ON DELETE NO ACTION
