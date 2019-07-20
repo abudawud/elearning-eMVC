@@ -14,3 +14,11 @@ function js_redirect($url, $msg = null){
 
     echo "<script>window.location = \"$url\"</script>";
 }
+
+function init_dir($dir){
+    if(!file_exists($dir)){
+        return mkdir($dir, 0777, true);
+    }
+
+    return true;
+}

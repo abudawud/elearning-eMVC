@@ -3,7 +3,7 @@
     class c_matkul extends C_Controller
     {
         function __construct()
-        { 
+        {
             $this->load_model('m_matkul');
         }
 
@@ -53,12 +53,13 @@
             $this->template('matkul/v_matkul', $data);
         }
 
-        function form($params = null){
+        function form($params = null)
+        {
             $action = $params[0];
             $id = $params[1];
 
             $matkul = array();
-            switch($action){
+            switch ($action) {
                 case 'add':
                     $title = "Tambah Master Matakuliah";
                     break;
@@ -83,17 +84,19 @@
             $this->template('matkul/v_form_matkul', $data);
         }
 
-        function delete($params = null){
+        function delete($params = null)
+        {
             $id = $params[0];
             $res = $this->m_matkul->delete($id);
-            if($res){
+            if ($res) {
                 js_redirect(BASE_URL . "c_matkul", "Master Matakuliah berhasil dihapus");
-            }else{
+            } else {
                 js_redirect(BASE_URL . "c_matkul", "Master Matakuliah gagal dihapis!");
             }
         }
 
-        function save($params = null){
+        function save($params = null)
+        {
             $action = $_POST['action'];
             $id = $_POST['id'];
             $data = array(
@@ -102,7 +105,7 @@
                 'deskripsi' => $_POST['matkul_desc']
             );
 
-            switch($action){
+            switch ($action) {
                 case 'add':
                     $res = $this->m_matkul->add($data);
                     $msg = $res ? "Master Mata Kuliah Berhasil Ditambahkan!" : "Master Mata Kuliah Gagal Ditambahkan!";
@@ -113,12 +116,6 @@
                     break;
             }
 
-            if($res){
-                js_redirect(BASE_URL . "c_matkul", $msg);
-            }else{
-                js_redirect(BASE_URL . "c_matkul", $msg);
-            }
-
-
+            js_redirect(BASE_URL . "c_matkul", $msg);
         }
     }

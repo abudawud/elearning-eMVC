@@ -9,7 +9,9 @@
 
         <div class="content" style="margin-left:50px">
             <form enctype="multipart/form-data" method="post" action="<?= BASE_URL ?>c_ampu/save">
+                <input type="hidden" name="action" value="<?= $action ?>" />
                 <input type="hidden" name="id_matkul" value="<?= $matkul->id_matkul ?>" />
+                <input type="hidden" name="id_teach" value="<?= $matkul->id_dosen_teachs ?>" />
                 <table style="border: none;" cellpadding="5px" width="100%">
                     <tr>
                         <td align="right">Kode</td>
@@ -19,12 +21,12 @@
                     <tr>
                         <td align="right">Nama</td>
                         <td>:</td>
-                        <td><input disabled type="text" value="<?= $matkul->judul ?>"/></td>
+                        <td><input disabled type="text" value="<?= $matkul->judul ?>" /></td>
                     </tr>
                     <tr>
                         <td align="right">Deskripsi</td>
                         <td>:</td>
-                        <td><textarea disabled rows="3" ><?= $matkul->deskripsi ?></textarea></td>
+                        <td><textarea disabled rows="3"><?= $matkul->deskripsi ?></textarea></td>
                     </tr>
                     <tr class="text-center bg-secondary">
                         <td align="center" colspan="3">Penunjang Matakuliah</td>
@@ -32,12 +34,22 @@
                     <tr>
                         <td align="right">File</td>
                         <td>:</td>
-                        <td><input name="file" type="file"/></td>
+                        <td><input name="file" type="file" /></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Nama File</td>
+                        <td>:</td>
+                        <td>
+                            <input readonly type="text" name="file_name" value="<?= $matkul->file_name ?>" />
+                            <?php if ($action == 'edit') { ?>
+                                <a target="_blank" href="<?= UPLOAD_URL . $matkul->file_path?> ">Download</a>
+                            <?php } ?>
+                        </td>
                     </tr>
                     <tr>
                         <td align="right">Deskripsi File</td>
                         <td>:</td>
-                        <td><textarea name="desc_file" rows="3" ></textarea></td>
+                        <td><textarea name="desc_file" rows="3"><?= $matkul->keterangan_file ?></textarea></td>
                     </tr>
 
                     <tr class="text-center bg-secondary">

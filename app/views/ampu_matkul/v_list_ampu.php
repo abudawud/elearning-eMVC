@@ -27,9 +27,10 @@
                         <td><?= $index ?></td>
                         <td><?= $item->nm_matkul ?></td>
                         <td><?= $item->judul ?></td>
-                        <td><?= $item->deskripsi ?></td>
+                        <td><?= $item->file_name ?></td>
+                        <td><?= $item->keterangan_file ?></td>
                         <td align="center">
-                            <a href='javascript:ampu("<?= $item->id_matkul ?>");'>Ampu</a>
+                            <a href='javascript:edit("<?= $item->id_matkul ?>");'>Lihat</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -40,9 +41,9 @@
 </div>
 <!-- END OF CONTAINER -->
 <script>
-function ampu(id){
-    if(confirm("Yakin ingin mengampu matakuliah ini ?") ){
-        window.location = "<?= BASE_URL ?>c_ampu/add/" + id;
+function edit(id){
+    if(confirm("Edit matakuliah yang telah diampu ?") ){
+        window.location = "<?= BASE_URL ?>c_ampu/edit/" + id;
     }else{
         alert("Aksi dibatalkan!");
     }

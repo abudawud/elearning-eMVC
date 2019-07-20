@@ -17,7 +17,6 @@
                     <th>Nama</th>
                     <th>Judul</th>
                     <th>Deskripsi</th>
-                    <th>File</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -31,8 +30,7 @@
                         <td><?= $item->nm_matkul ?></td>
                         <td><?= $item->judul ?></td>
                         <td><?= $item->deskripsi ?></td>
-                        <td><?= $item->file ?></td>
-                        <td>
+                        <td align="center">
                             <a href='<?= BASE_URL ?>c_matkul/form/edit/<?= $item->id_matkul ?>'>Edit</a> /
                             <a href='javascript:del("<?= $item->id_matkul ?>");'>Delete</a>
                         </td>

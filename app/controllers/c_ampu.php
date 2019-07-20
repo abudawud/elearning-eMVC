@@ -22,8 +22,16 @@ class c_ampu extends C_Controller
                 $this->add($params);
                 break;
 
+            case 'edit':
+                $this->edit($params);
+                break;
+
             case 'save':
                 $this->save($params);
+                break;
+
+            case 'list':
+                $this->list($params);
                 break;
 
             default:
@@ -44,10 +52,20 @@ class c_ampu extends C_Controller
     {
         $data = array(
             'title' => 'Ampu Mata Kuliah',
-            'matkul' => $this->m_matkul->gets()
+            'matkul' => $this->m_ampu->gets(5)
         );
 
         $this->template('ampu_matkul/v_ampu', $data);
+    }
+
+    function list($params = null)
+    {
+        $data = array(
+            'title' => 'Ampu Mata Kuliah',
+            'ampu' => $this->m_ampu->getMyAmpu(5)
+        );
+
+        $this->template('ampu_matkul/v_list_ampu', $data);
     }
 
     function add($params = null){
@@ -60,11 +78,25 @@ class c_ampu extends C_Controller
         $this->template('ampu_matkul/v_form_ampu', $data);
     }
 
-    function save($params = null){
-        $id = 1; // Change with session
+    function edit($params = null){
+        $data = array(
+            'title' => "Ubah Matakuliah Diampu",
+            'action' => "edit",
+            'matkul' => $this->m_ampu->get($params[0])
+        );
 
+        $this->template('ampu_matkul/v_form_ampu', $data);
+    }
+
+    function save($params = null){
+        $id = 5; // Change with session
+
+        $action = $_POST['action'];
         $file = $_FILES['file']['name'];
-        $tmpFile = $_FILES['tmp'];
+        $file = empty($file) ? $_POST['file_name'] : $file;
+
+        $tmpFile = $_FILES['file']['tmp_name'];
+        $fileDir = UPLOAD_DIR . "ampu/";
 
         $data = array(
             'id_dosen' => $id,
@@ -73,6 +105,27 @@ class c_ampu extends C_Controller
             'file_name' => $file
         );
 
-        $this->m_ampu->add($data);
+        if($action == 'add'){
+            $res = $this->m_ampu->add($data);
+            $msg = $res ? "Matakuliah Telah Diampu" : "Gagal mengampu matakuliah";
+            $idTeach = $this->m_ampu->getMaxID();
+            $fileDir .= $idTeach;
+            
+            $this->m_ampu->update(array('file' => "ampu/$idTeach/$file"), array('id_dosen_teachs' => $idTeach) );
+            if(init_dir($fileDir)){
+                move_uploaded_file($tmpFile, $fileDir . "/$file");
+            }
+        }else{
+            $idTeach = $_POST['id_teach'];
+            $fileDir .= $idTeach;
+            $res = $this->m_ampu->update($data, array('id_dosen_teachs' => $idTeach) );
+            $msg = $res ? "Matakuliah yang diampu berhasil diupdate!" : "Gagal menyimpan data!";
+            if(!empty($tmpFile)){
+                move_uploaded_file($tmpFile, $fileDir . "/$file");
+                $this->m_ampu->update(array('file' => "ampu/$idTeach/$file"), array('id_dosen_teachs' => $idTeach) );
+            }
+        }
+
+        js_redirect(BASE_URL . "c_ampu", $msg);
     }
 }

@@ -11,9 +11,10 @@
             <thead>
                 <tr>
                     <th width="5%">No</th>
+                    <th>Kode</th>
                     <th>Nama</th>
-                    <th>Judul</th>
                     <th>Deskripsi</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -28,7 +29,14 @@
                         <td><?= $item->judul ?></td>
                         <td><?= $item->deskripsi ?></td>
                         <td align="center">
-                            <a href='javascript:ampu("<?= $item->id_matkul ?>");'>Ampu</a>
+                            <?= $item->status ? 'Sudah Diampu' : 'Belum Diampu' ?>
+                        </td>
+                        <td align="center">
+                            <?php if ($item->status) { ?>
+                                <a href='<?= BASE_URL ?>c_ampu/edit/<?= $item->id_dosen_teachs ?>'>Edit</a>
+                            <?php } else { ?>
+                                <a href='javascript:ampu("<?= $item->id_matkul ?>");'>Ampu</a>
+                            <?php } ?>
                         </td>
                     </tr>
                 <?php } ?>
