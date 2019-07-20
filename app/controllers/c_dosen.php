@@ -83,9 +83,9 @@
             $id = $params[0];
             $res = $this->m_dosen->delete($id);
             if($res){
-                js_redirect(BASE_URL . "c_dosen", "Master Matakuliah berhasil dihapus");
+                js_redirect(BASE_URL . "c_dosen", "Master Dosen berhasil dihapus");
             }else{
-                js_redirect(BASE_URL . "c_dosen", "Master Matakuliah gagal dihapis!");
+                js_redirect(BASE_URL . "c_dosen", "Master Dosen gagal dihapis!");
             }
         }
 

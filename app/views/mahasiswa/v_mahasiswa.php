@@ -19,7 +19,6 @@
                     <th>E-mail</th>
                     <th>Tanggal Lahir</th>
                     <th>Alamat</th>
-                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -34,8 +33,7 @@
                         <td><?= $item->nama ?></td>
                         <td><?= $item->email ?></td>
                         <td><?= $item->tgl_lhr ?></td>
-                        <td><?= $item->almat ?></td>
-                        <td><?= $item->foto ?></td>
+                        <td><?= $item->alamat ?></td>
                         <td>
                             <a href='<?= BASE_URL ?>c_mahasiswa/form/edit/<?= $item->id_mahasiswa ?>'>Edit</a> /
                             <a href='<?= BASE_URL ?>c_mahasiswa/form/delete/<?= $item->id_mahasiswa ?>'>Delete</a></td>

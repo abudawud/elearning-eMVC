@@ -19,7 +19,6 @@
                     <th>E-mail</th>
                     <th>Tanggal Lahir</th>
                     <th>Alamat</th>
-                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -35,7 +34,6 @@
                         <td><?= $item->email ?></td>
                         <td><?= $item->tgl_lhr ?></td>
                         <td><?= $item->alamat ?></td>
-                        <td><?= $item->foto ?></td>
                         <td>
                             <a href='<?= BASE_URL ?>c_dosen/form/edit/<?= $item->id_dosen ?>'>Edit</a> /
                             <a href='<?= BASE_URL ?>c_dosen/form/delete/<?= $item->id_dosen ?>'>Delete</a></td>
