@@ -4,6 +4,7 @@
 <div id="sidebar">
     <div class="menu">
         <ul>
+            <li><a href="<?= BASE_URL ?>c_home">Beranda</a></li>
             <li><a href="<?= BASE_URL ?>c_matkul">Master Matakuliah</a></li>
             <li><a href="<?= BASE_URL ?>c_dosen">Master Dosen</a></li>
             <li><a href="<?= BASE_URL ?>c_mahasiswa">Master Mahasiswa</a></li>
