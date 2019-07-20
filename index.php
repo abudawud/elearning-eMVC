@@ -12,7 +12,7 @@ require(ROOT . "core/C_Model.php");
 require(ROOT . "config/config.php");
 require(ROOT . "config/database.php");
 
-$url = $_SERVER['PHP_SELF'];
+$url = $_SERVER['REQUEST_URI'];
 $url = explode('/', $url);
 $controller = ROOT . 'app/controllers/'.$url[2].'.php';
 if(file_exists($controller)){
