@@ -9,7 +9,7 @@
 
         <div class="content">
             <p>
-                <strong>E-Learning</strong> ini dikembangkan dengan tanpa framework apapun. 100% terjaga kemurniannya!
+                <strong>E-Learning</strong> ini dikembangkan dengan tanpa framework apapun. 100% terjaga kemurniannya :D
                 <h4>Anggota Kelompok:</h4>
                 <ul>
                     <li>Bardisbah [ xxx xxx xxx ] </li>
