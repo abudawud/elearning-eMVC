@@ -11,6 +11,7 @@
             <li><a href="<?= BASE_URL ?>c_ampu">Ampu Matakuliah</a></li>
             <!-- <li><a href="<?= BASE_URL ?>c_ampu/list">Matakuliah Diampu</a></li> -->
             <li><a href="#">Ikuti Matakuliah</a></li>
+            <li><a href="<?= BASE_URL ?>c_pengguna">Master Pengguna</a></li>
         </ul>
     </div>
 </div>
