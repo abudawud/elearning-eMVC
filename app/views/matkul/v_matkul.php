@@ -34,7 +34,8 @@
                         <td><?= $item->file ?></td>
                         <td>
                             <a href='<?= BASE_URL ?>c_matkul/form/edit/<?= $item->id_matkul ?>'>Edit</a> /
-                            <a href='<?= BASE_URL ?>c_matkul/form/delete/<?= $item->id_matkul ?>'>Delete</a></td>
+                            <a href='javascript:del("<?= $item->id_matkul ?>");'>Delete</a>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -43,3 +44,14 @@
 
 </div>
 <!-- END OF CONTAINER -->
+<script>
+function del(id){
+    if(confirm("Yakin ingin menghapus data?") ){
+        window.location = "<?= BASE_URL ?>c_matkul/delete/" + id;
+    }else{
+        alfunction test(){
+    alert("HALO");
+}ert("Aksi dibatalkan!");
+    }
+}
+</script>

@@ -19,4 +19,9 @@ class m_matkul extends C_Model{
     function update($data, $where){
         return $this->db_update('ms_matkul', $data, $where);
     }
+
+    function delete($id){
+        $sql = "DELETE FROM ms_matkul WHERE id_matkul = $id";
+        return $this->db->query($sql);
+    }
 }

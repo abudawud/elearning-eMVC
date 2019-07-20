@@ -25,6 +25,10 @@
                     $this->save($params);
                     break;
 
+                case 'delete':
+                    $this->delete($params);
+                    break;
+
                 default:
                     $this->page404();
                     break;
@@ -77,6 +81,16 @@
             );
 
             $this->template('matkul/v_form_matkul', $data);
+        }
+
+        function delete($params = null){
+            $id = $params[0];
+            $res = $this->m_matkul->delete($id);
+            if($res){
+                js_redirect(BASE_URL . "c_matkul", "Master Matakuliah berhasil dihapus");
+            }else{
+                js_redirect(BASE_URL . "c_matkul", "Master Matakuliah gagal dihapis!");
+            }
         }
 
         function save($params = null){
