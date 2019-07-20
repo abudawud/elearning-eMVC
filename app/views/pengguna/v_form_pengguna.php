@@ -25,7 +25,14 @@
                     <tr>
                         <td align="right">Level</td>
                         <td>:</td>
-                        <td><input name="pengguna_level" type="text" value="<?= $action == 'add' ? '' : $pengguna->level ?>"/></td>
+                        <td><!-- <input name="pengguna_level" type="text" value="<?= $action == 'add' ? '' : $pengguna->level ?>"/></td> -->
+                            <select id="level" name="pengguna_level">                      
+                                <option value="0">--Select Level--</option>
+                                <option value="2">dosen</option>
+                                <option value="3">mahasiswa</option>
+                                <option value="1">admin</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr class="text-center bg-secondary">
                         <td colspan="3">
