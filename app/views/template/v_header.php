@@ -16,7 +16,13 @@
         <div id="navbar">
             <div class="c-flex nav">
                 <div class="col-5 nav-title">E-Leaning</div>
-                <div style="margin:auto" class="col-5 text-right"><a href="<?= BASE_URL ?>c_login">Login</a></div>
+                <div style="margin:auto" class="col-5 text-right">
+                    <?php if ($_SESSION['is_login']) { ?>
+                        <?= $_SESSION['person_name'] ?> ( <a href="<?= BASE_URL ?>c_login/logout">Logout</a> )
+                    <?php } else { ?>
+                        <a href="<?= BASE_URL ?>c_login">Login</a>
+                    <?php } ?>
+                </div>
             </div>
         </div>
         <!-- END OF NAVBAR -->

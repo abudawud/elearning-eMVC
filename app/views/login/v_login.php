@@ -8,7 +8,7 @@
         </div>
 
         <div class="content" style="margin-left:50px">
-        <form method="post" action="<?= BASE_URL ?>c_dosen/save">
+        <form method="post" action="<?= BASE_URL ?>c_login/logon">
                 <table style="border: none;" cellpadding="5px" width="100%">
                     <tr>
                         <td align="right">Username</td>

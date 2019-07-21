@@ -4,7 +4,8 @@ class c_home extends C_Controller
 {
     function __construct()
     {
-
+        $this->load_model('m_menu');
+        session_start();
     }
 
     public function route($props)
@@ -25,6 +26,7 @@ class c_home extends C_Controller
 
     function template($view, $data = null)
     {
+        $data['sidebar'] = $this->m_menu->gets($_SESSION['level']);
         $this->render('template/v_header', $data);
         $this->render('template/v_sidebar', $data);
         $this->render($view, $data);

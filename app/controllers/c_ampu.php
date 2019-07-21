@@ -6,6 +6,8 @@ class c_ampu extends C_Controller
     {
         $this->load_model('m_matkul'); 
         $this->load_model('m_ampu'); 
+        $this->load_model('m_menu');
+        session_start();
     }
 
     public function route($props)
@@ -42,6 +44,7 @@ class c_ampu extends C_Controller
 
     function template($view, $data = null)
     {
+        $data['sidebar'] = $this->m_menu->gets($_SESSION['level']);
         $this->render('template/v_header', $data);
         $this->render('template/v_sidebar', $data);
         $this->render($view, $data);
@@ -52,7 +55,7 @@ class c_ampu extends C_Controller
     {
         $data = array(
             'title' => 'Ampu Mata Kuliah',
-            'matkul' => $this->m_ampu->gets(5)
+            'matkul' => $this->m_ampu->gets($_SESSION['id_person'])
         );
 
         $this->template('ampu_matkul/v_ampu', $data);
@@ -62,7 +65,7 @@ class c_ampu extends C_Controller
     {
         $data = array(
             'title' => 'Ampu Mata Kuliah',
-            'ampu' => $this->m_ampu->getMyAmpu(5)
+            'ampu' => $this->m_ampu->getMyAmpu($_SESSION['id_person'])
         );
 
         $this->template('ampu_matkul/v_list_ampu', $data);

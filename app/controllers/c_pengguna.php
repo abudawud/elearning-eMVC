@@ -6,7 +6,9 @@
         { 
             $this->load_model('m_pengguna');
             $this->load_model('m_dosen');
-            $this->load_model('m_mahasiswa');            
+            $this->load_model('m_mahasiswa');     
+            $this->load_model('m_menu');
+            session_start();       
         }
 
         public function route($props)
@@ -43,6 +45,7 @@
 
         function template($view, $data = null)
         {
+            $data['sidebar'] = $this->m_menu->gets($_SESSION['level']);
             $this->render('template/v_header', $data);
             $this->render('template/v_sidebar', $data);
             $this->render($view, $data);
@@ -113,14 +116,15 @@
 
         function save($params = null){
             $action = $_POST['action'];
-            $level = $_POST['pengguna_level'];
+            $isAdmin = $_POST['is_admin'];
+            $civitas = $_POST['pengguna_level'];
             $idPengguna = $_POST['id_pengguna'];
 
             $id = $_POST['id'];
             $data = array(
                 'user' => $_POST['pengguna_user'],
                 'password' => $_POST['pengguna_password'],
-                'level' => $level,
+                'level' => $isAdmin == 'false' ? 1 : $civitas,
             );
 
             switch($action){
@@ -131,9 +135,9 @@
                         'id_pengguna' => $id
                     );
 
-                    if($level == 2){ // DOSEN
+                    if($civitas == 2){ // DOSEN
                         $this->m_dosen->update($update, array('id_dosen' => $idPengguna));
-                    }else if($level == 3){ // MAHASISWA
+                    }else if($civitas == 3){ // MAHASISWA
                         $this->m_mahasiswa->update($update, array('id_mahasiswa' => $idPengguna));
                     }
 

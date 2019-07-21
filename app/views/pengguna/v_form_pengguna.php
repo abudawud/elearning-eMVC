@@ -13,7 +13,7 @@
                 <input type="hidden" name="id" value="<?= $pengguna->id_pengguna ?>" />
                 <table style="border: none;" cellpadding="5px" width="100%">
                     <tr>
-                        <td align="right">Level</td>
+                        <td align="right">Civitas</td>
                         <td>:</td>
                         <td>
                             <!-- <input name="pengguna_level" type="text" value="<?= $action == 'add' ? '' : $pengguna->level ?>"/></td> -->
@@ -43,6 +43,14 @@
                         <td>:</td>
                         <td><input name="pengguna_password" type="text" value="<?= $action == 'add' ? '' : $pengguna->password ?>" /></td>
                     </tr>
+
+                    <tr>
+                        <td align="right">Administrator</td>
+                        <td>:</td>
+                        <td>
+                            <label><input type="checkbox" value="false" name="is_admin">Yes</label>
+                        </td>
+                    </tr>
                     <tr class="text-center bg-secondary">
                         <td colspan="3">
                             <a type="submit" style="margin:3px 0px 3px 0px" href="<?= BASE_URL ?>c_pengguna" class="button btn-danger">BATAL</a>
@@ -58,24 +66,24 @@
 </div>
 <!-- END OF CONTAINER -->
 <script>
-const dosen = <?= $dosen?>;
-const mahasiswa = <?= $mahasiswa ?>;
+    const dosen = <?= $dosen ?>;
+    const mahasiswa = <?= $mahasiswa ?>;
 
-function updateUser(el){
-    const penggunaEl = document.getElementById('user_list');
-    switch(el.value){
-        case '2': // DOSEN
-            const dOption = dosen.map((e) => (
-                `<option value="${e.id_dosen}">${e.nama}</option>`
-            ));
-            penggunaEl.innerHTML = '<option>--Select Level--</option>' + dOption.join(' ');
-            break;
-        case '3': // MAHASISWA
-            const mOption = mahasiswa.map((e) => (
-                `<option value="${e.id_mahasiswa}">${e.nama}</option>`
-            ));
-            penggunaEl.innerHTML = '<option>--Select Level--</option>' + mOption.join(' ');
-            break;
+    function updateUser(el) {
+        const penggunaEl = document.getElementById('user_list');
+        switch (el.value) {
+            case '2': // DOSEN
+                const dOption = dosen.map((e) => (
+                    `<option value="${e.id_dosen}">${e.nama}</option>`
+                ));
+                penggunaEl.innerHTML = '<option>--Select Level--</option>' + dOption.join(' ');
+                break;
+            case '3': // MAHASISWA
+                const mOption = mahasiswa.map((e) => (
+                    `<option value="${e.id_mahasiswa}">${e.nama}</option>`
+                ));
+                penggunaEl.innerHTML = '<option>--Select Level--</option>' + mOption.join(' ');
+                break;
+        }
     }
-}
 </script>
