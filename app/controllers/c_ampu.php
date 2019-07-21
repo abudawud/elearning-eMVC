@@ -92,7 +92,7 @@ class c_ampu extends C_Controller
     }
 
     function save($params = null){
-        $id = 5; // Change with session
+        $id = $_SESSION['id_person'];
 
         $action = $_POST['action'];
         $file = $_FILES['file']['name'];

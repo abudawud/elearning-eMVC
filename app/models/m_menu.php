@@ -21,7 +21,8 @@ class m_menu extends C_Model{
             case '3': // MAHASISWA
                 $data = array(
                     "<li><a href=\"" . BASE_URL ."c_home\">Beranda</a></li>",
-                    "<li><a href=\"" . BASE_URL . "c_follow\">Ikuti Matakuliah</a></li>"
+                    "<li><a href=\"" . BASE_URL . "c_follow\">Ikuti Matakuliah</a></li>",
+                    "<li><a href=\"" . BASE_URL . "c_follow/list_follow\">Matakuliah Diikuti</a></li>"
                 );
                 break;
             default:   // GUEST

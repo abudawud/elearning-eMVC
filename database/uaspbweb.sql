@@ -34,7 +34,7 @@ CREATE TABLE `dosen_teachs` (
   KEY `fk_dosen_teachs_id_matkul_idx` (`id_matkul`),
   CONSTRAINT `fk_dosen_teachs_id_dosen` FOREIGN KEY (`id_dosen`) REFERENCES `ms_dosen` (`id_dosen`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_dosen_teachs_id_matkul` FOREIGN KEY (`id_matkul`) REFERENCES `ms_matkul` (`id_matkul`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,15 +45,13 @@ DROP TABLE IF EXISTS `mahasiswa_follows`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mahasiswa_follows` (
-  `idmahasiswa_follows` int(11) NOT NULL,
+  `idmahasiswa_follows` int(11) NOT NULL AUTO_INCREMENT,
   `id_mahasiswa` int(11) NOT NULL,
-  `id_matkul` int(11) NOT NULL,
+  `id_matkul_dosen` int(11) NOT NULL,
   PRIMARY KEY (`idmahasiswa_follows`),
   KEY `fk_mahasiswa_follows_id_mahasiswa_idx` (`id_mahasiswa`),
-  KEY `fk_mahasiswa_follows_id_matkul_idx` (`id_matkul`),
-  CONSTRAINT `fk_mahasiswa_follows_id_mahasiswa` FOREIGN KEY (`id_mahasiswa`) REFERENCES `ms_mahasiswa` (`id_mahasiswa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_mahasiswa_follows_id_matkul` FOREIGN KEY (`id_matkul`) REFERENCES `ms_matkul` (`id_matkul`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_mahasiswa_follows_id_mahasiswa` FOREIGN KEY (`id_mahasiswa`) REFERENCES `ms_mahasiswa` (`id_mahasiswa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +73,7 @@ CREATE TABLE `ms_dosen` (
   PRIMARY KEY (`id_dosen`),
   KEY `fk_ms_dosen_ms_pengguna1` (`id_pengguna`),
   CONSTRAINT `fk_ms_dosen_ms_pengguna1` FOREIGN KEY (`id_pengguna`) REFERENCES `ms_pengguna` (`id_pengguna`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +128,7 @@ CREATE TABLE `ms_pengguna` (
   `password` varchar(45) DEFAULT NULL,
   `level` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_pengguna`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,6 +154,62 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `v_mahasiswa_follow`
+--
+
+DROP TABLE IF EXISTS `v_mahasiswa_follow`;
+/*!50001 DROP VIEW IF EXISTS `v_mahasiswa_follow`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `v_mahasiswa_follow` AS SELECT 
+ 1 AS `idmahasiswa_follows`,
+ 1 AS `id_mahasiswa`,
+ 1 AS `id_dosen`,
+ 1 AS `nama_dosen`,
+ 1 AS `id_dosen_teachs`,
+ 1 AS `nm_matkul`,
+ 1 AS `judul`,
+ 1 AS `deskripsi`,
+ 1 AS `file_name`,
+ 1 AS `keterangan_file`,
+ 1 AS `file_path`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `v_matkul_dosen`
+--
+
+DROP TABLE IF EXISTS `v_matkul_dosen`;
+/*!50001 DROP VIEW IF EXISTS `v_matkul_dosen`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `v_matkul_dosen` AS SELECT 
+ 1 AS `id_dosen`,
+ 1 AS `nm_matkul`,
+ 1 AS `judul`,
+ 1 AS `deskripsi`,
+ 1 AS `id_dosen_teachs`,
+ 1 AS `id_matkul`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `v_pengguna`
+--
+
+DROP TABLE IF EXISTS `v_pengguna`;
+/*!50001 DROP VIEW IF EXISTS `v_pengguna`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `v_pengguna` AS SELECT 
+ 1 AS `id_person`,
+ 1 AS `id_pengguna`,
+ 1 AS `person_name`,
+ 1 AS `user`,
+ 1 AS `password`,
+ 1 AS `level`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Dumping routines for database 'elearning'
 --
 
@@ -176,6 +230,60 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_mahasiswa_follow`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_mahasiswa_follow`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`elearning`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_mahasiswa_follow` AS select `mf`.`idmahasiswa_follows` AS `idmahasiswa_follows`,`mf`.`id_mahasiswa` AS `id_mahasiswa`,`dt`.`id_dosen` AS `id_dosen`,`md`.`nama` AS `nama_dosen`,`dt`.`id_dosen_teachs` AS `id_dosen_teachs`,`mm`.`nm_matkul` AS `nm_matkul`,`mm`.`judul` AS `judul`,`mm`.`deskripsi` AS `deskripsi`,`dt`.`file_name` AS `file_name`,`dt`.`keterangan_file` AS `keterangan_file`,`dt`.`file` AS `file_path` from (((`mahasiswa_follows` `mf` join `dosen_teachs` `dt` on((`dt`.`id_dosen_teachs` = `mf`.`id_matkul_dosen`))) join `ms_matkul` `mm` on((`mm`.`id_matkul` = `dt`.`id_matkul`))) join `ms_dosen` `md` on((`md`.`id_dosen` = `dt`.`id_dosen`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_matkul_dosen`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_matkul_dosen`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`elearning`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_matkul_dosen` AS select `dt`.`id_dosen` AS `id_dosen`,`mm`.`nm_matkul` AS `nm_matkul`,`mm`.`judul` AS `judul`,`mm`.`deskripsi` AS `deskripsi`,`dt`.`id_dosen_teachs` AS `id_dosen_teachs`,`mm`.`id_matkul` AS `id_matkul` from ((`dosen_teachs` `dt` join `ms_matkul` `mm` on((`mm`.`id_matkul` = `dt`.`id_matkul`))) left join `mahasiswa_follows` `mf` on((`mf`.`id_matkul_dosen` = `dt`.`id_dosen_teachs`))) where isnull(`mf`.`idmahasiswa_follows`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `v_pengguna`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v_pengguna`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`elearning`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `v_pengguna` AS select `md`.`id_dosen` AS `id_person`,`mp`.`id_pengguna` AS `id_pengguna`,`md`.`nama` AS `person_name`,`mp`.`user` AS `user`,`mp`.`password` AS `password`,`mp`.`level` AS `level` from (`ms_dosen` `md` join `ms_pengguna` `mp` on((`mp`.`id_pengguna` = `md`.`id_pengguna`))) union select `mm`.`id_mahasiswa` AS `id_person`,`mp`.`id_pengguna` AS `id_pengguna`,`mm`.`nama` AS `person_name`,`mp`.`user` AS `user`,`mp`.`password` AS `password`,`mp`.`level` AS `level` from (`ms_mahasiswa` `mm` join `ms_pengguna` `mp` on((`mp`.`id_pengguna` = `mm`.`id_pengguna`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -186,4 +294,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-21 13:19:18
+-- Dump completed on 2019-07-21 22:47:12

@@ -4,10 +4,7 @@
 <div id="container">
     <div class="content">
         <div class="content-title c-flex">
-            <div class="col-5 m-auto">Master Mata Kuliah</div>
-            <div class="col-10 text-right">
-                <a class="button btn-primary" href="<?= BASE_URL ?>c_matkul/form/add/">TAMBAH MATA KULIAH</a>
-            </div>
+            <div class="col-10 m-auto">Ikuti Matakuliah > <a href="<?= BASE_URL ?>c_follow">...</a> > Pilih Matakuliah</div>
         </div>
 
         <table class="table">
@@ -31,8 +28,7 @@
                         <td><?= $item->judul ?></td>
                         <td><?= $item->deskripsi ?></td>
                         <td align="center">
-                            <a href='<?= BASE_URL ?>c_matkul/form/edit/<?= $item->id_matkul ?>'>Edit</a> /
-                            <a href='javascript:del("<?= $item->id_matkul ?>");'>Delete</a>
+                            <a href='javascript:follow("<?= $item->id_dosen_teachs ?>");'>Ikuti</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -43,9 +39,9 @@
 </div>
 <!-- END OF CONTAINER -->
 <script>
-    function del(id) {
-        if (confirm("Yakin ingin menghapus data?")) {
-            window.location = "<?= BASE_URL ?>c_matkul/delete/" + id;
+    function follow(id) {
+        if (confirm("Yakin ingin mengikitu matakuliah ini ?")) {
+            window.location = `<?= BASE_URL ?>c_follow/follow/${id}/` + <?= $id_dosen ?>;
         } else {
             alert("Aksi dibatalkan!");
         }

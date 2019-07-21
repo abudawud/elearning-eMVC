@@ -19,7 +19,20 @@
                 </tr>
             </thead>
             <tbody>
-
+                <?php
+                $index = 0;
+                foreach ($dosen as $key => $item) {
+                    $index++; ?>
+                    <tr>
+                        <td><?= $index ?></td>
+                        <td><?= $item->nama ?></td>
+                        <td><?= $item->nidn ?></td>
+                        <td><?= $item->email ?></td>
+                        <td><?= $item->alamat ?></td>
+                        <td>
+                            <a href='<?= BASE_URL ?>c_follow/matkul/<?= $item->id_dosen ?>'>Lihat</a>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
