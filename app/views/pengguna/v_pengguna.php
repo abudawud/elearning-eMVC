@@ -6,7 +6,7 @@
         <div class="content-title c-flex">
             <div class="col-5">Master Pengguna</div>
             <div class="col-10 text-right">
-                <a class="button btn-primary" href="<?= BASE_URL ?>c_pengguna/form/add/">TAMBAH PENGGUNA</a>
+                <a class="button btn-primary" href="<?= BASE_URL ?>c_pengguna/add/">TAMBAH PENGGUNA</a>
             </div>
         </div>
 

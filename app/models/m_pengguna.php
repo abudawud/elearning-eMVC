@@ -23,4 +23,22 @@ class m_pengguna extends C_Model{
         $sql = "DELETE FROM ms_pengguna WHERE id_pengguna = $id";
         return $this->db->query($sql);
     }
+
+    function getMaxID(){
+        $sql = "SELECT max(id_pengguna) c_id FROM ms_pengguna";
+        return $this->db->query($sql)->fetch_object()->c_id;
+    }
+
+    function getsMahasiswa(){
+        $sql = "SELECT id_mahasiswa, nama FROM ms_mahasiswa";
+        $res = $this->db->query($sql);
+        return $this->db_results($res);
+    }
+
+    function getsDosen(){
+        $sql = "SELECT id_dosen, nama FROM ms_dosen";
+        $res = $this->db->query($sql);
+        return $this->db_results($res);
+    }
+
 }

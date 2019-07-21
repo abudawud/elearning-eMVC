@@ -5,6 +5,8 @@
         function __construct()
         { 
             $this->load_model('m_pengguna');
+            $this->load_model('m_dosen');
+            $this->load_model('m_mahasiswa');            
         }
 
         public function route($props)
@@ -19,6 +21,10 @@
 
                 case 'form':
                     $this->form($params);
+                    break;
+
+                case 'add':
+                    $this->add($params);
                     break;
 
                 case 'save':
@@ -83,6 +89,17 @@
             $this->template('pengguna/v_form_pengguna', $data);
         }
 
+        function add($params = null){
+            $data = array(
+                'title' => 'Tambah Pengguna',
+                'action' => 'add',
+                'mahasiswa' => json_encode($this->m_pengguna->getsMahasiswa()),
+                'dosen' => json_encode($this->m_pengguna->getsDosen())
+            );
+        
+            $this->template('pengguna/v_form_pengguna', $data);
+        }
+
         function delete($params = null)
         {
             $id = $params[0];
@@ -96,16 +113,30 @@
 
         function save($params = null){
             $action = $_POST['action'];
+            $level = $_POST['pengguna_level'];
+            $idPengguna = $_POST['id_pengguna'];
+
             $id = $_POST['id'];
             $data = array(
                 'user' => $_POST['pengguna_user'],
                 'password' => $_POST['pengguna_password'],
-                'level' => $_POST['pengguna_level'],
+                'level' => $level,
             );
 
             switch($action){
                 case 'add':
                     $res = $this->m_pengguna->add($data);
+                    $id = $this->m_pengguna->getMaxID();
+                    $update = array(
+                        'id_pengguna' => $id
+                    );
+
+                    if($level == 2){ // DOSEN
+                        $this->m_dosen->update($update, array('id_dosen' => $idPengguna));
+                    }else if($level == 3){ // MAHASISWA
+                        $this->m_mahasiswa->update($update, array('id_mahasiswa' => $idPengguna));
+                    }
+
                     $msg = $res ? "Master Pengguna Berhasil Ditambahkan!" : "Master Pengguna Gagal Ditambahkan!";
                     break;
                 case 'edit':

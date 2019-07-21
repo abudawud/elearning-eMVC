@@ -19,7 +19,13 @@ class C_Model {
         $fields = implode(', ', array_keys($data));
         $value = "'" . implode("','", $data) . "'";
         $sql = "INSERT INTO $table ($fields) VALUE ($value)";
-        return $this->db->query($sql);
+        $res = $this->db->query($sql);
+        if(!$res){
+            echo $this->db->error;
+            echo "<br>SQL: $sql";
+            die();
+        }
+        return $res;
     }
 
     function db_update($table, $data, $where = null){
@@ -36,6 +42,12 @@ class C_Model {
         $sets = implode(', ', $sets);
         $where = count($where) ? "WHERE " . implode(' AND ', $wheres) : '';
         $sql = "UPDATE $table SET $sets $where";
-        return $this->db->query($sql);
+        $res = $this->db->query($sql);
+        if(!$res){
+            echo $this->db->error;
+            echo "<br>SQL: $sql";
+            die();
+        }
+        return $res;
     }
 }
