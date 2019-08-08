@@ -1,9 +1,9 @@
 # elearning-uas
 * Controller Matakuliah
-![URI Structure](https://raw.githubusercontent.com/abudawud/eMVC/master/docs/c_matkul.png "Controller Matakuliah")
+![Controller Matakuliah](https://raw.githubusercontent.com/abudawud/elearning-eMVC/master/docs/c_matkul.png "Controller Matakuliah")
 
 * Controller Dosen
-![URI Structure](https://raw.githubusercontent.com/abudawud/eMVC/master/docs/c_dosen.png "Controller Dosen")
+![Controller Dosen](https://raw.githubusercontent.com/abudawud/elearning-eMVC/master/docs/c_dosen.png  "Controller Dosen")
 
 # Testing
 untuk menjalankannya, install `php` terlebih dahulu lalu jalankan perintah berikut
